@@ -1,5 +1,4 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 
 body{
@@ -11,12 +10,14 @@ body{
     align-items: center;
     background-color: rgba(73, 15, 15, 0.856);
     background-image: url(caderno.avif);
+    background-size: cover;
     background-position: center;
 }   
+
 .tarefa{
     background-color: rgba(78, 12, 131, 0.438);
     border-radius: 7px;
-    height: 600px;
+    height: 450px;
     width: 350px;
     flex-direction: column;
     display: flex;
@@ -43,7 +44,7 @@ button{
     background-color: rgba(78, 12, 131, 0.438);
     border-radius: 7px;
     height: 200px;
-    width: 350px;
+    width: 700px;
     flex-direction: column;
     display: flex;
     justify-content:center;
@@ -57,6 +58,7 @@ input[type=text]{
 input[type=checkbox]{
     width: 50px;
     height: 20px;
+    border-radius: 100%;
 }
 #dimi{
     width: 100px;
@@ -80,29 +82,16 @@ h1{
 }
 .conclu{
     width: 350px;
-    height: 600px;
+    height: 450px;
     background-color: rgba(88, 34, 138, 0.459);
     border-radius: 7px;
     margin: 20px;
 }
 
-ul li {
-    list-style: none;
-    user-select: none;
-    cursor: pointer;
-    padding-right: 10px;
-    position: relative;
-}
-
-ul li::before {
-    content: '';
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-image: url(./images/unchecked.png);
-    background-size: cover;
-    background-position: center;
-    top: 12px;
-    left: 8px;
+.testelado{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    height: 70%;
 }
