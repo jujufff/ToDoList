@@ -1,19 +1,23 @@
+class tarefa {
+  constructor (Tarefa) {
+    this.tarefa = Tarefa
+  }
+}
+
 class toDoList {
   constructor () {
     this.lista_tarefas = [];
   }
 
   adicionarTarefa (tarefa) {
-  
     this.lista_tarefas.push({descricao: tarefa, concluida: false});
- 
   } 
   
-  tarefasConcluidas (posição) {
+  tarefaConcluida (posição) {
     this.lista_tarefas[posição].concluida = true; 
   }
   
-  removerTarefas (pos) {
+  removerTarefa (pos) {
     this.lista_tarefas.splice (pos,1)
   } 
 
@@ -21,23 +25,38 @@ class toDoList {
     console.log ("Tarefas:");
     for (let i = 0; i < this.lista_tarefas.length; i++) {
       let tarefa = this.lista_tarefas[i];
-      console.log(`${i + 1}. [${tarefa.concluida ? 'x' : ' '}] ${tarefa.descricao}`);
+      console.log(`${i + 1}. ${tarefa.descricao}`);
     }
   }
 } 
+let tarefa1 = new tarefa("andar")
+let tarefa2 = new tarefa("banhar")
 
-let minhaLista = new toDoList ()
+let listaTarefas = new toDoList()
 
-function tarefa () {
-  let tarefa = document.getElementById ("texto");
-  return tarefa;
+listaTarefas.adicionarTarefa(tarefa1)
+listaTarefas.adicionarTarefa(tarefa2)
+
+listaTarefas.exibirLista()
+
+
+
+
+class tarefaRepetitiva extends tarefa {
+   constructor () {
+     super()
+   }
 }
 
-let Tarefa = tarefa()
+// class tarefaPrioritaria extends Tarefa {
+//   constructor () {
+//     super ()
+//   }
+// }
 
-function addTarefa () {
-  
-}
+// let tarefa = document.getElementById ("texto");
+
+
 
 
 /*class ListaDeTarefas {
