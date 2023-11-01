@@ -1,97 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
 
+ body {
+    font-family: Arial, sans-serif;
+    background-image: url(imgs/caderno.avif);
 
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    background-color: rgba(73, 15, 15, 0.856);
-    background-image: url(caderno.avif);
-    background-size: cover;
-    background-position: center;
-}   
+}
 
-.tarefa{
-    background-color: rgba(78, 12, 131, 0.438);
-    border-radius: 7px;
-    height: 450px;
-    width: 350px;
-    flex-direction: column;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    font-family: 'Montserrat', sans-serif;
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
-input{
-    width: 195px;
-    height: 35px;
-    border: none;
-}
-button{
-    width: 200px;
-    height: 35px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(69, 26, 110, 0.521);
-}
-#texto{
-    margin-bottom: 10px;
-}
-.table{
-    background-color: rgba(78, 12, 131, 0.438);
-    border-radius: 7px;
-    height: 200px;
-    width: 700px;
-    flex-direction: column;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    font-family: 'Montserrat', sans-serif;
-}
-input[type=text]{
-    border-radius: 10px;
-    background-color: rgba(69, 26, 110, 0.521);
-}
-input[type=checkbox]{
-    width: 50px;
-    height: 20px;
-    border-radius: 100%;
-}
-#dimi{
-    width: 100px;
-    height: 30px;
-    background-color: rgba(69, 26, 110, 0.521);
-}
-#remo{
-    width: 100px;
-    height: 30px;
-    background-color: rgba(69, 26, 110, 0.521);
-}
-::placeholder{
-    color: black;
-    
-}
-h1{
+
+h1 {
     text-align: center;
-    color: rgb(38, 4, 70);
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px ;
-}
-.conclu{
-    width: 350px;
-    height: 450px;
-    background-color: rgba(88, 34, 138, 0.459);
-    border-radius: 7px;
-    margin: 20px;
 }
 
-.testelado{
+form {
     display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    height: 70%;
+    gap: 10px;
 }
+
+input[type="text"], select {
+    flex: 1;
+    padding: 5px;
+}
+
+button {
+    background-color: rgba(112, 12, 112, 0.767);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+ 
+
+ 
