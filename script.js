@@ -1,127 +1,115 @@
 const prompt = require('prompt-sync')();
-class tarefa {
-  constructor(descricao, concluida ) {
-    this._tarefa = descricao;
+
+class Tarefa {
+  constructor(descricao, concluida) {
+    this._descricao = descricao;
     this._concluida = concluida;
   }
 
-  info(){
-    return ("Tarefa: " + this._tarefa + "\nEstado: " + this._concluida)
-
-
-  }
-
-}
-
-class tarefaRepetitiva extends tarefa {
-  constructor(descricao,concluida,frequencia) {
-    super(descricao,concluida)
-    this._frequencia = frequencia
-  }
-  info(){
-    return("\nTarefa: " + this._tarefa +"\nEstado: "+ this._concluida + "\nFrequência: " + this._frequencia+"\n")
+  info() {
+    return `Tarefa: ${this._descricao}\nEstado: ${this._concluida}`;
   }
 }
 
-class tarefaPrioritaria extends tarefa {
-  constructor(descricao,concluida,nivelDePrioridade, dataLimite) {
-    super(descricao,concluida)
-    this.nivelDePrioridade = nivelDePrioridade
-    this.dataLimite = dataLimite
+class TarefaRepetitiva extends Tarefa {
+  constructor(descricao, concluida, frequencia) {
+    super(descricao, concluida);
+    this._frequencia = frequencia;
   }
-  info(){
-    return("\nTarefa: " + this._tarefa +"\nEstado: " + this._concluida + "\n nivel de prioridade: " + this.nivelDePrioridade+" \ndata de limite: " + this.dataLimite+"\n")
+
+  info() {
+    return `${super.info()}\nFrequência: ${this._frequencia}\n`;
   }
 }
 
-class TarefaComEtiqueta extends tarefa {
-  constructor (descricao,concluida,etiquetas = []) {
-    super(descricao,concluida)
-    this.etiquetas 
+class TarefaPrioritaria extends Tarefa {
+  constructor(descricao, concluida, nivelDePrioridade, dataLimite) {
+    super(descricao, concluida);
+    this._nivelDePrioridade = nivelDePrioridade;
+    this._dataLimite = dataLimite;
   }
- info(){
-  return("Tarefa: "+this._tarefa+"\nEstado: "  + this._concluida + this.etiqueta)
- }
+
+  info() {
+    return `${super.info()}\nNível de prioridade: ${this._nivelDePrioridade}\nData de limite: ${this._dataLimite}\n`;
+  }
 }
 
-//let tarefa1 = new tarefa(descricao, etiq)
+class TarefaComEtiqueta extends Tarefa {
+  constructor(descricao, concluida, etiquetas = []) {
+    super(descricao, concluida);
+    this._etiquetas = etiquetas;
+  }
 
+  info() {
+    return `${super.info()}\nEtiquetas: ${this._etiquetas.join(', ')}\n`;
+  }
+}
 
-class toDoList {
+class ToDoList {
   constructor() {
-    this.lista_tarefas = [];
+    this._listaTarefas = [];
   }
 
   adicionarTarefa(tarefa) {
-    this.lista_tarefas.push(tarefa);
+    this._listaTarefas.push(tarefa);
   }
 
   tarefaConcluida() {
-    for (let i = 0; i < this.lista_tarefas.length; i++) {
-      console.log(`${i}  -  ${this.lista_tarefas[i]._tarefa}`)
-     
+    for (let i = 0; i < this._listaTarefas.length; i++) {
+      console.log(`${i} - ${this._listaTarefas[i]._descricao}`);
     }
-    let op = prompt("Digite o indice para concluir: ");
-    this.lista_tarefas[op]._concluida = true;
+    let op = prompt("Digite o índice para concluir: ");
+    this._listaTarefas[op]._concluida = true;
   }
 
   removerTarefa() {
-    for (let i = 0; i < this.lista_tarefas.length; i++) {
-      console.log(`${i}  -  ${this.lista_tarefas[i]._tarefa}`)
-     
+    for (let i = 0; i < this._listaTarefas.length; i++) {
+      console.log(`${i} - ${this._listaTarefas[i]._descricao}`);
     }
-    let op = prompt("Digite o indice para remover: ");
-    this.lista_tarefas.splice(op, 1)
+    let op = prompt("Digite o índice para remover: ");
+    this._listaTarefas.splice(op, 1);
   }
 
   exibirLista() {
-    //console.log ("Tarefas:");
-    for (let i = 0; i < this.lista_tarefas.length; i++) {
-      console.log(this.lista_tarefas[i].info())
-      //let tarefa = this.lista_tarefas[i];
-      //console.log(`${i + 1}. ${tarefa.descricao}`);
-
+    for (let i = 0; i < this._listaTarefas.length; i++) {
+      console.log(this._listaTarefas[i].info());
     }
   }
 }
-//const nome = document.getElementById("tarefaAdicionada").value
-let tarefa1 = new tarefa("comer",false)
-let tarefa2 = new tarefaPrioritaria("banhar",false,"alto","1452")
-let tarefa3 = new tarefaRepetitiva ("dormir",false,"todo dia")
 
-let listaTarefas = new toDoList()
+let listaTarefas = new ToDoList();
 
+while (true) {
+  let escolha = prompt("Você tem as seguintes opções:\n1 - Adicionar tarefa\n2 - Concluir tarefa\n3 - Remover tarefa\n4 - Visualizar tarefas\nDigite sua escolha:");
 
-while(true){
-  let escolha = prompt("Voce tem as seguintes opcoes: \n\n1- adicionar tarefa\n2- concluir tarefa\n3- remover tarefa\n4- vizualizar tarefas\n\nDigite sua escolha:")
- 
-   if(escolha == 1){
-        let decisao = prompt('1- tarefa normal\n2- tarefa prioritaria\n3- tarefa repetitiva\n4- tarefa com etiqueta')
-        if(decisao == 1){
-          let descricao = prompt("digite a descricao: ")
-          let tarefa1 = new tarefa(descricao,false)
-          listaTarefas.adicionarTarefa(tarefa1)
-         
-        }else if(decisao == 2){
-          let descricao = prompt("digite a descricao: ")
-          let prio = prompt("Digite o nivel de prioridade:")
-          let dtmax = prompt("Digite a data maxima")
-          let tarefa1 = new tarefaPrioritaria(descricao,false,prio,dtmax)
-          listaTarefas.adicionarTarefa(tarefa1)
-        }else if(decisao == 3){
-          let descricao = prompt("digite a descricao: ")
-          let frequencia = prompt("Digite a frequência:")
-          let tarefa1 = new tarefaRepetitiva(descricao,false,frequencia)
-          listaTarefas.adicionarTarefa(tarefa1)
-        }else if(decisao == 4){
-          let descricao = prompt("digite a descricao: ")
-          let etiqueta = prompt("Digite a etiqueta:")
-          let tarefa1 = new TarefaComEtiqueta(descricao,false,etiqueta)
-          listaTarefas.adicionarTarefa(tarefa1)
-        }
-        
-        else if(escolha == 'p'){
-    break;
-   }
-}
+  if (escolha === "1") {
+    let decisao = prompt('1 - Tarefa normal\n2 - Tarefa prioritária\n3 - Tarefa repetitiva\n4 - Tarefa com etiqueta');
+    let descricao = prompt("Digite a descrição: ");
+
+    if (decisao === "1") {
+      let tarefa = new Tarefa(descricao, false);
+      listaTarefas.adicionarTarefa(tarefa);
+    } else if (decisao === "2") {
+      let prioridade = prompt("Digite o nível de prioridade:");
+      let dataLimite = prompt("Digite a data limite:");
+      let tarefa = new TarefaPrioritaria(descricao, false, prioridade, dataLimite);
+      listaTarefas.adicionarTarefa(tarefa);
+    } else if (decisao === "3") {
+      let frequencia = prompt("Digite a frequência:");
+      let tarefa = new TarefaRepetitiva(descricao, false, frequencia);
+      listaTarefas.adicionarTarefa(tarefa);
+    } else if (decisao === "4") {
+      let etiquetas = prompt("Digite as etiquetas separadas por vírgula:").split(',');
+      let tarefa = new TarefaComEtiqueta(descricao, false, etiquetas);
+      listaTarefas.adicionarTarefa(tarefa);
+    }
+  } else if (escolha === "2") {
+    listaTarefas.tarefaConcluida();
+  } else if (escolha === "3") {
+    listaTarefas.removerTarefa();
+  } else if (escolha === "4") {
+    listaTarefas.exibirLista();
+  } else {
+    console.log("Escolha inválida. Digite 1, 2, 3 ou 4 para escolher uma opção.");
+  }
 }
