@@ -114,6 +114,6 @@ while (true) {
     break;
   }
    else {
-    console.log("Escolha inválida. Digite 1, 2, 3 ou 4 para escolher uma opção.");
+    console.log("Escolha inválida. Digite 1, 2, 3, 4 ou 5 para escolher uma opção.");
   }
 }
