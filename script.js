@@ -80,7 +80,7 @@ class ToDoList {
 let listaTarefas = new ToDoList();
 
 while (true) {
-  let escolha = prompt("Você tem as seguintes opções:\n1 - Adicionar tarefa\n2 - Concluir tarefa\n3 - Remover tarefa\n4 - Visualizar tarefas\nDigite sua escolha:");
+  let escolha = prompt("Você tem as seguintes opções:\n1 - Adicionar tarefa\n2 - Concluir tarefa\n3 - Remover tarefa\n4 - Visualizar tarefas\n5 - Finalizar\nDigite sua escolha:");
 
   if (escolha === "1") {
     let decisao = prompt('1 - Tarefa normal\n2 - Tarefa prioritária\n3 - Tarefa repetitiva\n4 - Tarefa com etiqueta');
@@ -109,7 +109,11 @@ while (true) {
     listaTarefas.removerTarefa();
   } else if (escolha === "4") {
     listaTarefas.exibirLista();
-  } else {
+  }
+  else if (escolha === "5") {
+    break;
+  }
+   else {
     console.log("Escolha inválida. Digite 1, 2, 3 ou 4 para escolher uma opção.");
   }
 }
